@@ -1,5 +1,6 @@
 // setup
 const { Configuration, OpenAIApi } = require("openai");
+const functions = require("firebase-functions");
 const express = require('express');
 const bodyParser = require('body-parser')
 const cors = require('cors')
@@ -14,7 +15,7 @@ const openai = new OpenAIApi(configuration);
 
 const app = express()
 app.use(bodyParser.json())
-app.use(cors())
+app.use(cors({origin: 'https://practice-german-with-ai.web.app'}))
 const port = 3080
 
 app.post('/', async (req, res) => {
@@ -38,6 +39,8 @@ app.post('/', async (req, res) => {
       }
 });
 
-app.listen(port, () => {
-    console.log(`example app listening at http://localhost:${port}`)
-})
+exports.app = functions.https.onRequest(app);
+
+// app.listen(port, () => {
+//     console.log(`example app listening at http://localhost:${port}`)
+// })

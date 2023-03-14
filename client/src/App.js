@@ -31,7 +31,6 @@ function App() {
     setPersona(personaChoice)
     setChatLog([])
     let data = await fetchResponse([{role: "user", content: "Hallo"}], personaChoice.systemMessage)
-    console.log(data)
     setChatLog([data])
   }
 
@@ -53,7 +52,6 @@ function App() {
   }, [chatLog])
 
 
-console.log(chatLog, "HERE")
   return (
     <div className="App">
 

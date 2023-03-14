@@ -8,10 +8,11 @@ export const useFetchResponse = () => {
 
     const fetchResponse = async (messages, personaChoice) => {
 
+
         try{
             setFetchIsPending(true)
             setFetchError(null)
-            const response = await fetch("http://localhost:3080/", {
+            const response = await fetch("https://us-central1-practice-german-with-ai.cloudfunctions.net/app/", {
                 method: "POST",
                 headers: {
                 "Content-Type": "application/json"
